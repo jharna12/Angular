@@ -10,8 +10,8 @@ const routes: Routes = [
   { path: '', redirectTo: 'book', pathMatch: 'full' },
   { path: 'book', component: BookListComponent },
   { path: 'add', component: CreateBookComponent },
-  { path: 'update/:id', component: UpdateBookComponent },
-  { path: 'details/:id', component: BookDetailsComponent },
+  { path: 'update/:bookId', component: UpdateBookComponent },
+  { path: 'details/:bookId', component: BookDetailsComponent },
 ];
 
 @NgModule({

@@ -6,23 +6,23 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class BookService {
-  private baseUrl = 'http://localhost:8080/Angular 8 + Spring Boot 2 CRUD Tutorial/book';
+  private baseUrl = 'http://localhost:8080/api/v1/book';
 
   constructor(private http : HttpClient) { }
   getBookList(): Observable<any> {
     return this.http.get(`${this.baseUrl}`);
   }
-  deleteBook(id: number):Observable<any>{
-    return this.http.delete('${this.baseUrl}/${id}',{responseType:'text'});
+  deleteBook(bookId: number):Observable<any>{
+    return this.http.delete(`${this.baseUrl}/${bookId}`,{responseType:'text'});
    
   }
   createBook(book:Object):Observable<Object>{
-return this.http.post('${this.baseUrl}',book);
+return this.http.post(`${this.baseUrl}`,book);
   }
-  getBook(id: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/${id}`);
+  getBook(bookId: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/${bookId}`);
   }
-  updateBook(id: number,value: any): Observable<Object> {
-    return this.http.put(`${this.baseUrl}/${id}`,value);
+  updateBook(bookId: number,value: any): Observable<Object> {
+    return this.http.put(`${this.baseUrl}/${bookId}`,value);
   }
 }

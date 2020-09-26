@@ -9,15 +9,15 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./update-book.component.scss']
 })
 export class UpdateBookComponent implements OnInit {
-  id: number;
+  bookId: number;
   book: Book;
 
   constructor(private bookService :BookService,private route: ActivatedRoute,private router: Router) { }
 
   ngOnInit(): void {
     this.book = new Book();
-    this.id = this.route.snapshot.params['id'];
-    this.bookService.getBook(this.id).subscribe(data=>{
+    this.bookId = this.route.snapshot.params['bookId'];
+    this.bookService.getBook(this.bookId).subscribe(data=>{
       console.log(data);
       this.book=data;
 
@@ -25,7 +25,7 @@ export class UpdateBookComponent implements OnInit {
 
   }
   updateBook(){
-    this.bookService.updateBook(this.id,this.book).subscribe(data=>{
+    this.bookService.updateBook(this.bookId,this.book).subscribe(data=>{
       console.log(data);
      this.book=new Book();
      this.gotoList();

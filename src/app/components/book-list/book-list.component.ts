@@ -23,16 +23,21 @@ export class BookListComponent implements OnInit {
   reloadData() {
     this.book = this.bookService.getBookList(); // to fetch all the book details
   }
-  deleteBook(id: number) {
-    this.bookService.deleteBook(id)
+  deleteBook(bookId: number) {
+    this.bookService.deleteBook(bookId)
       .subscribe(
         data => {
           console.log(data);
           this.reloadData();
         },
         error => console.log(error));
+      
   }
-  bookDetails(id: number){
-    this.router.navigate(['details', id]);
+  bookDetails(bookId: number){
+    this.router.navigate(['details', bookId]);
+    
+  }
+  updateBook(bookId:number){
+    this.router.navigate(['update',bookId]);
   }
 }

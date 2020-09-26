@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./book-details.component.scss']
 })
 export class BookDetailsComponent implements OnInit {
-  id: number
+  bookId: number
   book:Book
 
   constructor(private bookService :BookService,private route: ActivatedRoute,private router: Router) { }
@@ -17,9 +17,9 @@ export class BookDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.book = new Book();
 
-    this.id = this.route.snapshot.params['id'];
+    this.bookId = this.route.snapshot.params['bookId'];
     
-    this.bookService.getBook(this.id)
+    this.bookService.getBook(this.bookId)
       .subscribe(data => {
         console.log(data)
         this.book = data;
